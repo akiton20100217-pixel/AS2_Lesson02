@@ -18,7 +18,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        float zSpeed = 5 * Time.deltaTime;
+        transform.Translate(0, 0, zSpeed);
     }
 
     public void OnMove(InputValue value)
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
         Vector3 move = new Vector3(
         　　value.Get<Vector3>().x, 
             value.Get<Vector3>().y,
-            value.Get<Vector3>().z);
+            0);
 
         if (transform.position.x + value.Get<Vector3>().x > 8 
             || transform.position.x + value.Get<Vector3>().x < -8)
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
 
         move.x = Mathf.Round(move.x);
         move.y = Mathf.Round(move.y);
+        
 
         //プレイヤーの移動
         transform.Translate(move);
