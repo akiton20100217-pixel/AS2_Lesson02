@@ -1,46 +1,38 @@
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class Spawner : MonoBehaviour
 {
+    public GameObject spawnPrefab;     // スポーンするオブジェクトのプレハブ
 
-    [SerializeField] 
-    public GameObject enemy;
-    public Transform SpawnPointPre;
-
-    public float spawnInterval = 3f;
-    public float spawnTimer = 0f;
+    private float spawnInterval = 2f;     // スポーンの間隔（秒）
+    private float spawnTimer = 0f;        // スポーンのタイマー
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        SpawnTimer();
-        SpawnPoint();
-    }
+        spawnTimer += Time.deltaTime;       // タイマーを更新(毎秒)
 
-    void SpawnTimer()
-    {
-        spawnTimer += Time.deltaTime;
         if (spawnTimer >= spawnInterval)
         {
-            Instantiate(enemy, transform.position, transform.rotation);
-            spawnTimer = 0f;
+            SpawnObject();      // オブジェクトを生成
+            spawnTimer = 0f;    // タイマーをリセット
         }
     }
 
-    private void SpawnPoint()
+    // オブジェクトを生成するメソッド
+    private void SpawnObject()
     {
+        // プレイヤーのZ座標を取得
         Player player = GameObject.FindAnyObjectByType<Player>();
         float playerZ = player.transform.position.z;
 
         Vector3 randomPos = Vector3.zero;
-        randomPos.x = Random.Range(-8f, 8f);
-         
-        randomPos.z = playerZ + 100;
-        Instantiate(SpawnPointPre, randomPos, transform.rotation);
+        randomPos.x = Random.Range(-8, 8);   // X軸のランダムな位置
+        randomPos.z = playerZ + 100;         // プレイヤーの前方に生成
+        Instantiate(spawnPrefab, randomPos, transform.rotation);
     }
 }
