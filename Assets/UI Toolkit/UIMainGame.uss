@@ -1,0 +1,25 @@
+:root {
+
+}
+
+#root-container{
+	flex-direction: row;
+}
+
+#score-container{
+	opacity: 1;
+	background-color: red;
+}
+
+ green{
+	 background-color: green;
+ }
+
+#options-container{
+	flex-direction: row-reverse;
+}
+
+#game-quit-button{
+	width: 100px;
+	height: 100px;
+}

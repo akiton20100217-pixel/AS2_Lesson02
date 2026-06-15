@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/new.uss?fileID=7433441132597879392&amp;guid=32e71a529689b704eb96fb8c92b0be45&amp;type=3#new"/>
+    <ui:VisualElement name="rootContaner" style="flex-grow: 1;">
+        <ui:VisualElement name="OptionContaner" style="flex-grow: 1;">
+            <ui:Button text="Button" name="GameQuitButtun"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="ScoreContaner" style="flex-grow: 1;">
+            <ui:Label text="Label" name="scoreLabel"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
