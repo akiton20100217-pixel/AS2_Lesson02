@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,12 @@ public class Player : MonoBehaviour
     public GameObject gyroAzis; //ジャイロ軸　：オブジェクト
     private Vector3 lookAngles; //向きベクトル：値
     private float gyroAngles;   //ジャイロ回転：値
+
+    //バリアの設定
+    [Header("バリア設定")]
+    public GameObject barrier; //バリアのオブジェクト参照
+    public MeshRenderer barrierRenderer; //バリアのマテリアル参照
+    public bool barrierActivation; //バリアの有効無効
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -94,5 +101,14 @@ public class Player : MonoBehaviour
 
         // 5秒後に弾丸を破壊する
         Destroy(bullet, 5f);
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        // バリアが有効な場合は衝突を無視する
+        if(collision.transform.tag.Equals("Item/Barrier"))
+        {
+            
+        }
     }
 }
