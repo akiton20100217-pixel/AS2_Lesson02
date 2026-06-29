@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public MeshRenderer barrierRenderer; //バリアのマテリアル参照
     public bool barrierActivation; //バリアの有効無効
 
+    public GameObject MuzzilFlash;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -101,6 +103,9 @@ public class Player : MonoBehaviour
 
         // 5秒後に弾丸を破壊する
         Destroy(bullet, 5f);
+
+        GameObject Flash = Instantiate(MuzzilFlash, shotPoint.transform.position, transform.rotation);
+        Destroy(Flash, 5f);
     }
 
     void OnTriggerEnter(Collider collision)
